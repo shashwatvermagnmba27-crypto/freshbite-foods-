@@ -1,0 +1,89 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="y4gJj16hA8Ayh3bc_-c0">
+    <mxGraphModel dx="1635" dy="837" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="m4JFqBClx077QIJ9Hj48-6" edge="1" parent="1" source="m4JFqBClx077QIJ9Hj48-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" value="1. Customer Feedback Collection&lt;br&gt;Synthetic customer feedback from five FreshBite Foods products." vertex="1">
+          <mxGeometry height="60" width="190" x="240" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-9" edge="1" parent="1" source="m4JFqBClx077QIJ9Hj48-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="345" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" value="&lt;div&gt;2. Data Storage and Organisation&lt;/div&gt;&lt;div&gt;Google Sheets&lt;/div&gt;&lt;div&gt;Raw_Customer_Feedback&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="200" x="240" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-12" edge="1" parent="1" source="m4JFqBClx077QIJ9Hj48-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="345" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" value="&lt;div&gt;3. AI-Powered Sentiment Analysis&lt;/div&gt;&lt;div&gt;ChatGPT analyses customer feedback and identifies sentiment.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="200" x="240" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-15" edge="1" parent="1" source="m4JFqBClx077QIJ9Hj48-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="345" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-17" edge="1" parent="1" source="m4JFqBClx077QIJ9Hj48-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;defaultLabelBackgroundColor=page;labelPadding=0 4;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" value="&lt;div&gt;4. Feedback Classification and Interpretation&lt;/div&gt;&lt;div&gt;Sentiment, feedback category, key issue and AI recommendation.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="200" x="240" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-19" edge="1" parent="1" source="m4JFqBClx077QIJ9Hj48-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-32" edge="1" parent="1" source="m4JFqBClx077QIJ9Hj48-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;labelPadding=0 4;" target="m4JFqBClx077QIJ9Hj48-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" value="&lt;div&gt;5. Data Analytics and Dashboard&lt;/div&gt;&lt;div&gt;Identify product-wise sentiment, common issues and feedback trends.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="200" x="240" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-23" edge="1" parent="1" source="m4JFqBClx077QIJ9Hj48-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;labelPadding=0 4;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="925" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-33" edge="1" parent="1" source="m4JFqBClx077QIJ9Hj48-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;labelPadding=0 4;entryX=0.893;entryY=0.973;entryDx=0;entryDy=0;entryPerimeter=0;" target="m4JFqBClx077QIJ9Hj48-25">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="840" y="183.83177570093457" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6d8764;fontColor=#ffffff;strokeColor=#3A5431;" value="&lt;div&gt;6. Marketing Recommendation Generation&lt;/div&gt;&lt;div&gt;Suggest improvements in taste, quality, packaging, price and availability.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="200" x="240" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" value="&lt;div&gt;7. Management Review and Decision-Making&lt;/div&gt;&lt;div&gt;Management reviews AI insights and decides suitable business actions.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="200" x="240" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffff88;strokeColor=#36393d;" value="&lt;div&gt;Proposed Automation Layer – n8n&lt;/div&gt;&lt;div&gt;Low-code workflow automation&lt;/div&gt;&lt;div&gt;1. Automated data movement&lt;/div&gt;&lt;div&gt;2. AI-powered feedback analysis&lt;/div&gt;&lt;div&gt;3. Feedback classification&lt;/div&gt;&lt;div&gt;4. Recommendation delivery&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="230" x="680" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-31" edge="1" parent="1" source="m4JFqBClx077QIJ9Hj48-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.018;entryY=0.646;entryDx=0;entryDy=0;entryPerimeter=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" target="m4JFqBClx077QIJ9Hj48-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-34" edge="1" parent="1" source="m4JFqBClx077QIJ9Hj48-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.008;entryY=0.415;entryDx=0;entryDy=0;entryPerimeter=0;defaultLabelBackgroundColor=page;labelPadding=0 4;" target="m4JFqBClx077QIJ9Hj48-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-35" parent="1" style="text;whiteSpace=wrap;fontStyle=1" value="Human SupervisionFinal AI-generated recommendations are reviewed by the management team before implementation." vertex="1">
+          <mxGeometry height="50" width="560" x="143" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="m4JFqBClx077QIJ9Hj48-37" parent="1" style="text;whiteSpace=wrap;html=1;" value="&lt;strong&gt;FreshBite Foods&lt;/strong&gt;" vertex="1">
+          <mxGeometry height="40" width="170" x="280" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

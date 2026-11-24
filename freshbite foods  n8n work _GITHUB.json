@@ -1,0 +1,475 @@
+{
+  "name": "freshbite foods 1",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "9962cc03-fe3c-4a52-935c-d1e028119115",
+      "name": "When clicking ‘Execute workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        -64
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1BGNlNc2velRVPMxqHK0o4GB9clpEgN15rklimye18WI",
+          "mode": "list",
+          "cachedResultName": "FreshBite_Synthetic_Customer_Feedback_Datase",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1BGNlNc2velRVPMxqHK0o4GB9clpEgN15rklimye18WI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "raw_customer_data",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1BGNlNc2velRVPMxqHK0o4GB9clpEgN15rklimye18WI/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "16dc6258-0926-48c2-ac47-1d0b5cfc37ff",
+      "name": "Get row(s) in sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -176,
+        -64
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "U7fkcKFLzE9IIMAu",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "f0ac396c-e839-49ae-ae2c-a709cf9bc929",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        48,
+        -64
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "AQ.Ab8RN6IqtpGGDgKid1cqpCORHGlh9Dkl5uWklpUr1vWxvMX8jw"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "\n{\n  \"contents\": [\n    {\n      \"parts\": [\n        {\n          \"text\": \"Analyse this customer feedback for FreshBite Foods. Product: {{ $json.Product_Name }}. Feedback: {{ $json.Feedback_Text }}. Rating: {{ $json.Rating }}. Identify sentiment as Positive, Negative, Neutral or Mixed. Classify the category as Taste, Quality, Packaging, Price, Quantity or Availability. Identify the main issue and give one practical recommendation. Return only valid JSON with these four fields: sentiment, feedback_category, key_issue, ai_recommendation.\"\n        }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"temperature\": 0.2,\n    \"responseMimeType\": \"application/json\"\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        272,
+        -64
+      ],
+      "id": "8530b7dc-af83-4385-b97b-fb2cbbd4609e",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1BGNlNc2velRVPMxqHK0o4GB9clpEgN15rklimye18WI",
+          "mode": "list",
+          "cachedResultName": "FreshBite_Synthetic_Customer_Feedback_Datase",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1BGNlNc2velRVPMxqHK0o4GB9clpEgN15rklimye18WI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1541728157,
+          "mode": "list",
+          "cachedResultName": "n8n_ai_output",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1BGNlNc2velRVPMxqHK0o4GB9clpEgN15rklimye18WI/edit#gid=1541728157"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "CUSTOMER_ID": "={{ $('Limit').item.json.Customer_ID }}",
+            "PRODUCT NAME ": "={{ $('Limit').item.json.Product_Name }}",
+            "SENTIMENT": "={{ JSON.parse($('HTTP Request').item.json.candidates[0].content.parts[0].text).sentiment }}",
+            "FEEDBACK CATEGORY": "={{ JSON.parse($('HTTP Request').item.json.candidates[0].content.parts[0].text).feedback_category }}",
+            "AI _RECCOMENDATION": "={{ JSON.parse($('HTTP Request').item.json.candidates[0].content.parts[0].text).ai_recommendation }}",
+            "KEY_ISSUE": "={{ JSON.parse($('HTTP Request').item.json.candidates[0].content.parts[0].text).key_issue }}"
+          },
+          "matchingColumns": [
+            "CUSTOMER_ID"
+          ],
+          "schema": [
+            {
+              "id": "CUSTOMER_ID",
+              "displayName": "CUSTOMER_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "PRODUCT NAME ",
+              "displayName": "PRODUCT NAME ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENTIMENT",
+              "displayName": "SENTIMENT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "FEEDBACK CATEGORY",
+              "displayName": "FEEDBACK CATEGORY",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "KEY_ISSUE",
+              "displayName": "KEY_ISSUE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AI _RECCOMENDATION",
+              "displayName": "AI _RECCOMENDATION",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        496,
+        -64
+      ],
+      "id": "d76b6609-5655-42cc-90c7-ffb7028c33df",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "U7fkcKFLzE9IIMAu",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1BGNlNc2velRVPMxqHK0o4GB9clpEgN15rklimye18WI",
+          "mode": "list",
+          "cachedResultName": "FreshBite_Synthetic_Customer_Feedback_Datase",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1BGNlNc2velRVPMxqHK0o4GB9clpEgN15rklimye18WI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "raw_customer_data",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1BGNlNc2velRVPMxqHK0o4GB9clpEgN15rklimye18WI/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "7038247f-7c40-4abf-90dc-0f62e5f0a9a7",
+      "name": "Get row(s) in sheet1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -32,
+        176
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "U7fkcKFLzE9IIMAu",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "ec02402e-2d20-4e10-98a7-ed0ffba0dc39",
+      "name": "Limit1",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        224,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "AQ.Ab8RN6IqtpGGDgKid1cqpCORHGlh9Dkl5uWklpUr1vWxvMX8jw"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "\n{\n  \"contents\": [\n    {\n      \"parts\": [\n        {\n          \"text\": \"Analyse this customer feedback for FreshBite Foods. Product: {{ $json.Product_Name }}. Feedback: {{ $json.Feedback_Text }}. Rating: {{ $json.Rating }}. Identify sentiment as Positive, Negative, Neutral or Mixed. Classify the category as Taste, Quality, Packaging, Price, Quantity or Availability. Identify the main issue and give one practical recommendation. Return only valid JSON with these four fields: sentiment, feedback_category, key_issue, ai_recommendation.\"\n        }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"temperature\": 0.2,\n    \"responseMimeType\": \"application/json\"\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        416,
+        192
+      ],
+      "id": "3e03e987-fd4a-4c81-9606-a1c99d77d724",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1BGNlNc2velRVPMxqHK0o4GB9clpEgN15rklimye18WI",
+          "mode": "list",
+          "cachedResultName": "FreshBite_Synthetic_Customer_Feedback_Datase",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1BGNlNc2velRVPMxqHK0o4GB9clpEgN15rklimye18WI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1541728157,
+          "mode": "list",
+          "cachedResultName": "n8n_ai_output",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1BGNlNc2velRVPMxqHK0o4GB9clpEgN15rklimye18WI/edit#gid=1541728157"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "CUSTOMER_ID": "={{ $('Limit1').item.json.Customer_ID }}",
+            "PRODUCT NAME ": "={{ $('Limit1').item.json.Product_Name }}",
+            "SENTIMENT": "={{ JSON.parse($('HTTP Request1').item.json.candidates[0].content.parts[0].text).sentiment }}",
+            "FEEDBACK CATEGORY": "={{ JSON.parse($('HTTP Request1').item.json.candidates[0].content.parts[0].text).feedback_category }}",
+            "AI _RECCOMENDATION": "={{ JSON.parse($('HTTP Request1').item.json.candidates[0].content.parts[0].text).ai_recommendation }}",
+            "KEY_ISSUE": "={{ JSON.parse($('HTTP Request1').item.json.candidates[0].content.parts[0].text).key_issue }}"
+          },
+          "matchingColumns": [
+            "CUSTOMER_ID"
+          ],
+          "schema": [
+            {
+              "id": "CUSTOMER_ID",
+              "displayName": "CUSTOMER_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "PRODUCT NAME ",
+              "displayName": "PRODUCT NAME ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SENTIMENT",
+              "displayName": "SENTIMENT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "FEEDBACK CATEGORY",
+              "displayName": "FEEDBACK CATEGORY",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "KEY_ISSUE",
+              "displayName": "KEY_ISSUE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AI _RECCOMENDATION",
+              "displayName": "AI _RECCOMENDATION",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        672,
+        208
+      ],
+      "id": "8c256c3f-3e43-4b39-8f05-d76e894bd875",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "U7fkcKFLzE9IIMAu",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "079e5d93-f412-41b3-8f90-4a1b6fcd0ca2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "51ca3daddb91e7a13538ed4fb6bbb08dd32c142c3dff33374f90f35f597b6c98"
+  },
+  "nodeGroups": [],
+  "id": "0PvKQwhmD4UqJyf6",
+  "tags": []
+}
